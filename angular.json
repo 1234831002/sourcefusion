@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "sourceFusion"
+    }
+  },
+  "defaultProject": "sourceFusion",
+  "cli": {
+    "analytics": "ada97653-e350-401f-8ab4-396790d0b93e"
+  }
 }
