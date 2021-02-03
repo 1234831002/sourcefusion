@@ -1,0 +1,21 @@
+<div [formGroup]="textForm">
+
+    <div class="form-group">
+        <label>Shift</label>
+        <input class="form-control" type="text" formControlName="shift">
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label>Plain Text</label>
+                <textarea class="form-control" type="text" formControlName="plainText" (keyup)="onChange()"></textarea>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group cvc">
+                <label>Encrypted Text</label>
+                <textarea class="form-control" type="text" formControlName="encryptedText"></textarea>
+            </div>
+        </div>
+    </div>
+</div>

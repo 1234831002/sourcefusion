@@ -1,1 +1,49 @@
-<p>payment works!</p>
+<div>
+  <form [formGroup]="paymentForm" (ngSubmit)="onSbumit()">
+
+    <div class="form-group">
+      <label>Name on Card</label>
+      <input class="form-control" type="text" placeholder="Enter Name on the card" formControlName="name" maxlength="29"
+        (keypress)="keyPress($event)" required>
+      <div class="alert alert-danger" *ngIf="paymentForm.get('name').invalid && paymentForm.get('name').touched">Invalid
+        Cardholder Name.</div>
+    </div>
+
+    <div class="form-group">
+      <label>Card Number</label>
+      <input class="form-control" type="text" formControlName="cardNumber" maxlength="16" minlength="16"
+        (keypress)="numbervalidation($event)" required>
+      <div class="alert alert-danger"
+        *ngIf="paymentForm.get('cardNumber').invalid && paymentForm.get('cardNumber').touched">Invalid Card Number.
+      </div>
+    </div>
+    <div class="form-group expiry" [formGroup]="expiryDate">
+      <label>Date of Expiration</label>
+      <div class="row">
+        <div class="col-sm-6">
+          <input class="form-control month" type="number" min=1 max=12 formControlName="month" required>
+        </div>
+        <div class="col-sm-6">
+          <input class="form-control year" type="text" formControlName="year" maxlength="4" minlength="4"
+            (keypress)="numbervalidation($event)" required>
+        </div>
+      </div>
+      <div class="alert alert-danger" *ngIf="expiryDate.invalid && expiryDate.touched">Invalid Date of Expiration.
+      </div>
+    </div>
+    <div class="form-group cvc">
+      <label>CVV/CVC</label>
+      <input class="form-control" type="text" formControlName="cvv" maxlength="3" minlength="3"
+        (keypress)="numbervalidation($event)" required>
+      <div class="alert alert-danger" *ngIf="paymentForm.get('cvv').invalid && paymentForm.get('cvv').touched">Invalid
+        CVV / CVC Number.</div>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" [disabled]="paymentForm.invalid" class="btn btn-primary">Submit</button>
+    </div>
+    <h3 class="center-block text-center">
+      {{message}}
+    </h3>
+  </form>
+</div>
